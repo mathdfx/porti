@@ -11,14 +11,10 @@ import ProjectsPage from './pages/ProjectsPage.jsx';
 
 function App() {
   return (
-    // 3. O BrowserRouter envolve toda a aplicação para ativar as rotas
     <BrowserRouter>
-      <Navbar /> {/* O Navbar fica aqui para aparecer em TODAS as páginas */}
-
-      <main> {/* É uma boa prática colocar o conteúdo principal em uma tag <main> */}
-        {/* 4. O Routes é a área onde o conteúdo das páginas vai mudar */}
+      <Navbar /> 
+      <main> 
         <Routes>
-          {/* 5. Cada Route é uma regra: "quando a URL for X, mostre o componente Y" */}
           <Route path="/" element={<HomePage />} />
           <Route path="/aprender-logica" element={<LearnLogicPage />} />
           <Route path="/projetos" element={<ProjectsPage />} />

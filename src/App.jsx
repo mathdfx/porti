@@ -1,35 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// src/App.jsx
+
+// 1. Importamos as ferramentas do react-router-dom
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// 2. Importamos nosso menu e nossas novas páginas
+import Navbar from './components/Navbar.jsx';
+import HomePage from './pages/HomePage.jsx';
+import LearnLogicPage from './pages/LearnLogicPage.jsx';
+import ProjectsPage from './pages/ProjectsPage.jsx';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    // 3. O BrowserRouter envolve toda a aplicação para ativar as rotas
+    <BrowserRouter>
+      <Navbar /> {/* O Navbar fica aqui para aparecer em TODAS as páginas */}
+
+      <main> {/* É uma boa prática colocar o conteúdo principal em uma tag <main> */}
+        {/* 4. O Routes é a área onde o conteúdo das páginas vai mudar */}
+        <Routes>
+          {/* 5. Cada Route é uma regra: "quando a URL for X, mostre o componente Y" */}
+          <Route path="/" element={<HomePage />} />
+          <Route path="/aprender-logica" element={<LearnLogicPage />} />
+          <Route path="/projetos" element={<ProjectsPage />} />
+        </Routes>
+      </main>
+
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
